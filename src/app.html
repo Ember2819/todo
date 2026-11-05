@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Tabtask</title>
+    <link rel="stylesheet" href="app.css" />
+    <script type="module" src="app.js"></script>
+  </head>
+  <body>
+    <div class="app" id="app">
+      <header class="top">
+        <div class="heading">
+          <h1>Tasks</h1>
+          <p class="summary" id="summary"></p>
+        </div>
+        <div class="top-actions">
+          <button class="icon-btn" id="panel-btn" type="button" aria-label="Open in side panel" data-tip="Side panel"></button>
+          <button class="icon-btn" id="settings-btn" type="button" aria-label="Settings" data-tip="Settings"></button>
+        </div>
+        <div class="progress" id="progress" role="progressbar" aria-label="Completed" aria-valuemin="0" aria-valuemax="100"><span></span></div>
+      </header>
+
+      <form class="composer" id="composer" autocomplete="off">
+        <div class="composer-field">
+          <span class="composer-plus" aria-hidden="true"></span>
+          <input id="new-title" type="text" placeholder="Add a task" aria-label="New task" spellcheck="true" />
+          <button class="icon-btn" id="draft-remind" type="button" aria-label="Remind me" data-tip="Remind"></button>
+          <button class="icon-btn" id="draft-attach" type="button" aria-label="Attach this tab" data-tip="Attach tab"></button>
+        </div>
+        <div class="draft-chips" id="draft-chips"></div>
+      </form>
+
+      <div class="stage" id="stage">
+        <canvas class="horizon" id="horizon" aria-hidden="true"></canvas>
+        <main class="scroller" id="scroller">
+          <div class="content" id="content">
+            <ul class="list" id="open-list" aria-label="Open tasks"></ul>
+            <div class="empty" id="empty" hidden>
+              <p class="empty-title">Nothing on your list</p>
+              <p class="empty-hint" id="empty-hint"></p>
+            </div>
+            <section class="done-section" id="done-section" hidden>
+              <div class="done-head">
+                <button class="done-toggle" id="done-toggle" type="button" aria-expanded="false">
+                  <span class="chev" aria-hidden="true"></span>
+                  Completed <span class="count" id="done-count"></span>
+                </button>
+                <button class="text-btn" id="clear-done" type="button">Clear</button>
+              </div>
+              <div class="collapse" id="done-collapse">
+                <div class="collapse-inner">
+                  <ul class="list done" id="done-list" aria-label="Completed tasks"></ul>
+                </div>
+              </div>
+            </section>
+          </div>
+        </main>
+      </div>
+
+      <div class="toast" id="toast" role="status" aria-live="polite">
+        <span class="toast-text"></span>
+        <button class="toast-action" type="button"></button>
+      </div>
+
+      <section class="sheet" id="settings" aria-label="Settings" aria-hidden="true" tabindex="-1">
+        <header class="sheet-head">
+          <h2>Settings</h2>
+          <button class="icon-btn" id="settings-close" type="button" aria-label="Close settings"></button>
+        </header>
+        <div class="sheet-body" id="settings-body"></div>
+      </section>
+
+      <div class="popover" id="popover" role="menu" tabindex="-1"></div>
+    </div>
+  </body>
+</html>

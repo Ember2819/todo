@@ -1,0 +1,70 @@
+{
+  "manifest_version": 3,
+  "name": "Tabtask",
+  "short_name": "Tabtask",
+  "version": "1.0.0",
+  "description": "A quiet to-do list that can hold your tabs until you need them.",
+  "icons": {
+    "16": "icons/icon-16.png",
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  },
+  "action": {
+    "default_title": "Tabtask",
+    "default_popup": "src/app.html",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "32": "icons/icon-32.png"
+    }
+  },
+  "background": {
+    "service_worker": "src/background.js",
+    "scripts": [
+      "src/background.js"
+    ]
+  },
+  "side_panel": {
+    "default_path": "src/app.html?view=panel"
+  },
+  "sidebar_action": {
+    "default_title": "Tabtask",
+    "default_panel": "src/app.html?view=panel",
+    "default_icon": "icons/icon-32.png",
+    "open_at_install": false
+  },
+  "permissions": [
+    "storage",
+    "tabs",
+    "alarms",
+    "notifications",
+    "contextMenus",
+    "sidePanel",
+    "favicon"
+  ],
+  "commands": {
+    "_execute_action": {
+      "suggested_key": {
+        "default": "Alt+Shift+T"
+      },
+      "description": "Open Tabtask"
+    },
+    "stash-tab": {
+      "suggested_key": {
+        "default": "Alt+Shift+S"
+      },
+      "description": "Stash the current tab as a task and close it"
+    }
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "tabtask@local",
+      "strict_min_version": "121.0",
+      "data_collection_permissions": {
+        "required": [
+          "none"
+        ]
+      }
+    }
+  }
+}
